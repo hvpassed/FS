@@ -1062,7 +1062,14 @@ namespace FixMath.NET
         public Fix64(int value) {
             m_rawValue = value * ONE;
         }
+        public static Fix64 Lerp(Fix64 a, Fix64 b, Fix64 t)
+        {
+	        // Clamp t between 0 and 1
+	        t = t < Fix64.Zero ? Fix64.Zero : (t > Fix64.One ? Fix64.One : t);
 
+	        // Perform the interpolation
+	        return a + (b - a) * t;
+        }
         public byte[] Serialize()
         {
 	        return MessagePackSerializer.Serialize(this );

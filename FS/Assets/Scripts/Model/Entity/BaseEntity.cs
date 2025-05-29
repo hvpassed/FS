@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using FixMath.NET;
 using FS.Math;
+using FS.Model;
+using UnityEngine;
+using View;
 
 namespace FS.Logic
 {
@@ -8,8 +11,23 @@ namespace FS.Logic
     {
         public FTransform transform;
         public FRigidbody rigidbody;
-        public Fix64 speed = Fix64.FromRaw(5);
+        public Fix64 speed =(Fix64)5;
         protected List<BaseComponent> allComponents = new List<BaseComponent>();
+
+        public GameObject prefab;
+        
+        public virtual void RegisterPrefab(VGameObject viewPrefab)
+        {
+ 
+        }
+
+        
+        
+        public virtual void RegisterView(GameObject viewPrefab)
+        {
+ 
+        }
+        
         
         
         public BaseEntity()

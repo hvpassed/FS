@@ -162,6 +162,7 @@ namespace FS.Server
                     break;
                 case MessageType.FrameInput:
                     MsgFrameInput msgFrameInput = message as MsgFrameInput;
+                    //logger.Warn($"MsgFrameInput received: {msgFrameInput?.playerId} {msgFrameInput?.inputs}");
                     _belongToRoom.ProcessInput(msgFrameInput);
                     break;
             }

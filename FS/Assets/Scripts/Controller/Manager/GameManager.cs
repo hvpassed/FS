@@ -260,7 +260,7 @@ namespace FS.Manager
             }
             
             
-            Fix64 deltaTime = (Fix64)Time.deltaTime;
+            Fix64 deltaTime = (Fix64)intervalTime;
             foreach (MonoBaseManager manager in _mgr)
             {
                 manager?.DoUpdate(deltaTime);
@@ -273,6 +273,7 @@ namespace FS.Manager
             hasStart = true;
             PlayerId = msgStartGame.playerId;
             PlayerCount = msgStartGame.playerCount;
+            EntityManager.Instance.StartGame(msgStartGame);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace FS.Server
             net.DoAwake();
         }
         
-        private const double updateInterval =  1f-0.002f; //frame rate = 30
+        private const double updateInterval =0.033f-0.002f; //frame rate = 30
         private double deltaTime;
         private double timeSinceStartUp;
         public void DoStart()
@@ -45,7 +45,10 @@ namespace FS.Server
             }
 
         }
-        
+        public void LateUpdate()
+        {
+            net.DoLateUpdate();
+        }
         
     }
 }

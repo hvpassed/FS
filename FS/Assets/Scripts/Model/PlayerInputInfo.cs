@@ -12,7 +12,16 @@ namespace FS.Model
         [Key(1)]
         public FVector2 mouseInput;
 
- 
+        public override string ToString()
+        {
+            return "{"+$"{keyboardInput},{mouseInput}"+"}";
+        }
+        
+        public readonly static PlayerInputInfo Empty = new PlayerInputInfo
+        {
+            keyboardInput = FVector2.Zero,
+            mouseInput = FVector2.Zero
+        };
 
         public byte[] Serialize()
         {

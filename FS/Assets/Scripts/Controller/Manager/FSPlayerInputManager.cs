@@ -59,12 +59,8 @@ namespace FS.Manager
                 
                 
                 var lookVector = (FVector2)(obj.ReadValue<Vector2>());
-                PushPlayInput(new PlayerInputInfo()
-                {
-                    mouseInput = lookVector,
-                    keyboardInput = FVector2.Zero
-                });
-                
+                CurrentFrameInput[_gameManager.FrameCount % _maxFrameCount].mouseInput = lookVector;
+                _currentFrameIndex++;
                  
             }
         }
@@ -78,11 +74,7 @@ namespace FS.Manager
         {
             if (isMovePressed)
             {
-                PushPlayInput(new PlayerInputInfo()
-                {
-                    mouseInput = FVector2.Zero,
-                    keyboardInput = _moveVector
-                });
+                CurrentFrameInput[_gameManager.FrameCount % _maxFrameCount].keyboardInput = _moveVector;
             }
         }
         
@@ -101,7 +93,7 @@ namespace FS.Manager
             if (context.performed)
             {
                 _moveVector =  (FVector2)(context.ReadValue<Vector2>());
-
+                _currentFrameIndex++;
                 isMovePressed = true;
 
             }
@@ -135,8 +127,8 @@ namespace FS.Manager
 
             
             
-            CurrentFrameInput[_currentFrameIndex].keyboardInput = playerInputInfo.keyboardInput;
-            CurrentFrameInput[_currentFrameIndex].mouseInput = playerInputInfo.mouseInput;
+            CurrentFrameInput[index].keyboardInput = playerInputInfo.keyboardInput;
+            CurrentFrameInput[index].mouseInput = playerInputInfo.mouseInput;
             _currentFrameIndex++;
         }
 

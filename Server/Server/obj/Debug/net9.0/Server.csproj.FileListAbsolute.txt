@@ -124,3 +124,4 @@ E:\Unity\Projects\FS-ALL\Server\Server\bin\Debug\net9.0\UnityEditor.DeviceSimula
 E:\Unity\Projects\FS-ALL\Server\Server\bin\Debug\net9.0\UnityEditor.QuickSearchModule.xml
 E:\Unity\Projects\FS-ALL\Server\Server\bin\Debug\net9.0\UnityEngine.InputModule.xml
 E:\Unity\Projects\FS-ALL\Server\Server\bin\Debug\net9.0\UnityEngine.UnityWebRequestTextureModule.xml
+E:\Unity\Projects\FS-ALL\Server\Server\obj\Debug\net9.0\Server.sourcelink.json

@@ -220,6 +220,7 @@ namespace FS.Network
                     _gameManager.StartGame((MsgStartGame)message);
                     break;
                 case MessageType.FrameInput:
+                    _networkManager.PushMsgFrameInput((MsgFrameInput)message);
                     break;
             }
         }

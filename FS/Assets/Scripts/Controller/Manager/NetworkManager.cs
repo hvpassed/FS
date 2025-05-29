@@ -28,7 +28,11 @@ namespace FS.Manager
         
         private FSPlayerInputManager _playerInputManager;
         private MsgFrameInput msgFrameInput;
-        
+
+
+        public long syncFrame = 0;
+        public long receivedFrame = 0;
+        List<PlayerInputInfo> acceptedPlayerInputInfos = new List<PlayerInputInfo>(10000);
         public override void DoAwake()
         {
             
@@ -87,7 +91,13 @@ namespace FS.Manager
             // //msgFrameInput.delteTime = deltaTime;
             // _session.Send(msgFrameInput);
             PlayerInputInfo  currentFrameInfo = _playerInputManager.GetCurrentFrameInfo(out int inputCount);
-            _session.Send(new MsgFrameInput(_gameManager.PlayerId, _gameManager.FrameCount, currentFrameInfo, inputCount));
+            Debug.Log($"[{ClassName}] GetCurrentFrameInfo {currentFrameInfo}");
+            var frameInput = new MsgFrameInput(_gameManager.PlayerId, _gameManager.FrameCount, currentFrameInfo, inputCount);
+            Debug.Log($"[{ClassName}] MsgFrameInput {frameInput.inputs[0]}");
+            byte[] message = MessageFactory.CreateMessage(frameInput);
+            MsgFrameInput des = MessageFactory.ParseMessage(message,out var type,true) as MsgFrameInput;
+            Debug.Log($"[{ClassName}] processed MsgFrameInput {des.inputs[0]}");
+            _session.Send(frameInput);
             
             
             
@@ -113,6 +123,38 @@ namespace FS.Manager
                 msgCtls.Clear();
             }
 
+        }
+
+        public void PushMsgFrameInput(MsgFrameInput serverFrameInput)
+        {
+ 
+            //TODO:修改成保存全部
+            //syncFrame = serverFrameInput.frameId;
+            receivedFrame++;
+            if (serverFrameInput.inputCount >= _gameManager.PlayerId)
+            {
+                //Debug.Log($"Recv input action : {serverFrameInput.inputs[_gameManager.PlayerId].keyboardInput}");
+                acceptedPlayerInputInfos.Add(serverFrameInput.inputs[_gameManager.PlayerId]);
+                Debug.Log($"Recv input action : {serverFrameInput.inputs[_gameManager.PlayerId].keyboardInput}, " +
+                          $"{serverFrameInput.inputs[_gameManager.PlayerId].mouseInput}");
+            }
+ 
+            
+        }
+        
+        
+        public PlayerInputInfo GetCurrentFrameInput()
+        {
+            //TODO:随之修改成保存全部
+            int current = (int)(syncFrame);
+            if (current < 0 || current > receivedFrame)
+            {
+                Debug.LogWarning($"[{ClassName}] Getting frame:{current} with received {receivedFrame}");
+                return PlayerInputInfo.Empty;
+            }
+
+            syncFrame++;
+            return acceptedPlayerInputInfos[current];
         }
         
         public void AddMsgCtl(MsgCtl msgCtl)

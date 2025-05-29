@@ -31,6 +31,7 @@ namespace FS.Server
                         Thread.Sleep(2);
                         context.Update();
                         server.Update();
+                        server.LateUpdate();
                     }
                     catch (ThreadAbortException e) {
                         return;

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a5d5f821344e09a840ad6ed27b19b0, type: 3}
   m_Name: LogicSetting
   m_EditorClassIdentifier: 
-  LogicFPS: 1
+  LogicFPS: 30

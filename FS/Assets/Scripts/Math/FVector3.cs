@@ -55,5 +55,17 @@ namespace FS.Math
         {
             return MessagePackSerializer.Serialize(this);
         }
+        
+        public static FVector3 Lerp(FVector3 a, FVector3 b, Fix64 t)
+        {
+            // Clamp t between 0 and 1
+            t = t < Fix64.Zero ? Fix64.Zero : (t > Fix64.One ? Fix64.One : t);
+
+            // Perform the interpolation for x and y components
+            Fix64 x = a.x + (b.x - a.x) * t;
+            Fix64 y = a.y + (b.y - a.y) * t;
+            Fix64 z = a.z + (b.z - a.z) * t;
+            return new FVector3(x, y,z);
+        }
     }
 }

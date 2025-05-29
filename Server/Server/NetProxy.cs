@@ -68,7 +68,10 @@ namespace FS.Server
         {
             room.DoUpdate();
         }
-        
+        public void DoLateUpdate()
+        {
+            room.DoLateUpdate();
+        }
         
         public async Task AcceptSync()
         {

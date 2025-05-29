@@ -1,5 +1,6 @@
 using FixMath.NET;
 using FS.Math;
+using UnityEngine;
 
 namespace FS.Logic
 {
@@ -17,7 +18,9 @@ namespace FS.Logic
             if (needChase) {
                 var dir = input.keyboardInput.normalized;
                 var xzSpeed = dir * speed * deltaTime;
+                
                 transform.Position += new FVector3(xzSpeed.x,0,xzSpeed.y);
+                Debug.LogWarning($"Moving{speed},{deltaTime}: speed:({(float)xzSpeed.x },{(float)xzSpeed.y}), dir:{dir}, input:{input.keyboardInput} transform:{transform.Position}");
                 // var targetDeg = dir.ToDeg();
                 // transform.Rotation = CTransform2D.TurnToward(targetDeg, transform.deg, 360 * deltaTime, out var hasReachDeg);
             }
