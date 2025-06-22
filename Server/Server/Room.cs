@@ -40,7 +40,10 @@ namespace FS.Server
         private long frame = 0;
         public long Frame => frame;
         private MsgFrameInput broadcastFrameInput;
-        private List<PlayerInputInfo> nextFrameOpt = new List<PlayerInputInfo>(MaxPlayer);
+        //private PlayerInputInfo[] nextFrameOpt = new PlayerInputInfo[MaxPlayer];//当前帧玩家输入
+        private bool[] recvedInputMsg = new bool[MaxPlayer];
+        private bool needClear = false;
+        private Dictionary<long,PlayerInputInfo[]> tick2PlayerInfo = new Dictionary<long, PlayerInputInfo[]>();//玩家输入记录
         public Room()
         {
             players.Capacity = MaxPlayer;
@@ -54,6 +57,10 @@ namespace FS.Server
                 });
             }
 
+            for (int i = 0; i < MaxPlayer; i++)
+            {
+                recvedInputMsg [i] = false;
+            }
             _msgFrameInput = new MsgFrameInput();
             broadcastFrameInput = new MsgFrameInput()
             {
@@ -62,15 +69,15 @@ namespace FS.Server
                 inputCount = 0,
                 inputs = null,
             };
-            nextFrameOpt.Capacity = MaxPlayer;
-            for (int i = 0; i < MaxPlayer; i++)
-            {
-                nextFrameOpt.Add(new PlayerInputInfo()
-                {
-                    keyboardInput = FVector2.Zero,
-                    mouseInput = FVector2.Zero
-                });
-            }
+            //nextFrameOpt.Capacity = MaxPlayer;
+            // for (int i = 0; i < MaxPlayer; i++)
+            // {
+            //     nextFrameOpt[i] = (new PlayerInputInfo()
+            //     {
+            //         keyboardInput = FVector2.Zero,
+            //         mouseInput = FVector2.Zero
+            //     });
+            // }
         }
 
         public void DoUpdate()
@@ -78,47 +85,58 @@ namespace FS.Server
             var lockTaken = false;
             if (isStart)
             {
+                //if(inputMgsRecvCount != playerCount){return;}
                 try
                 {
+
                     _spinLock.Enter(ref lockTaken);
-                    logger.Warn("[Doupdate]Get Lock");
-                    logger.Info("ready to send frame input");
-                    broadcastFrameInput.inputCount = playerCount;
+                    //logger.Warn("[Doupdate]Get Lock");
+                    if (!tick2PlayerInfo.TryGetValue(frame, out var toSend))
+                    {
+                        return;
+                    }
+                    needClear = true;
+                    
+                    
+                    // broadcastFrameInput.inputCount = playerCount;
+                    // broadcastFrameInput.frameId = frame;
+                    // //broadcastFrameInput.inputs = new PlayerInputInfo[MaxPlayer];
+                    // for (int i = 0; i < MaxPlayer; i++)
+                    // {
+                    //     broadcastFrameInput.inputs[i] = nextFrameOpt[i];
+                    // }
+                    // logger.Info("frame aregg cmpt:\n");
+                    // for (int i = 0; i < MaxPlayer; i++)
+                    // {
+                    //     PlayerInputInfo playerInputInfo = broadcastFrameInput.inputs[i];
+                    //     
+                    //     logger.Info($"{i} {playerInputInfo.keyboardInput} {playerInputInfo.mouseInput}");
+                    // }
+                    // for (int i = 0; i < players.Count; i++)
+                    // {
+                    //     
+                    //     if (players[i].playerId >= 0)
+                    //     {
+                    //         //_msgFrameInput.delteTime = 0;
+                    //         // _msgFrameInput.playerId = players[i].playerId;
+                    //         // _msgFrameInput.frameId = frame;
+                    //         // //logger.Info($"Send to {players[i].playerId}");
+                    //         logger.Info($"Send frame input to player {players[i].playerId} session {players[i].sessionId}");
+                    //         players[i].session.Send(broadcastFrameInput);
+                    //     }
+                    // }
                     broadcastFrameInput.frameId = frame;
-                    broadcastFrameInput.inputs = new PlayerInputInfo[nextFrameOpt.Count];
-                    for (int i = 0; i < nextFrameOpt.Count; i++)
-                    {
-                        broadcastFrameInput.inputs[i] = nextFrameOpt[i];
-                    }
-                    logger.Info("frame aregg cmpt:\n");
-                    for (int i = 0; i < nextFrameOpt.Count; i++)
-                    {
-                        PlayerInputInfo playerInputInfo = broadcastFrameInput.inputs[i];
-                        
-                        logger.Info($"{i} {playerInputInfo.keyboardInput} {playerInputInfo.mouseInput}");
-                    }
-                    for (int i = 0; i < players.Count; i++)
-                    {
-                        
-                        if (players[i].playerId >= 0)
-                        {
-                            //_msgFrameInput.delteTime = 0;
-                            // _msgFrameInput.playerId = players[i].playerId;
-                            // _msgFrameInput.frameId = frame;
-                            // //logger.Info($"Send to {players[i].playerId}");
-                            logger.Info($"Send frame input to player {players[i].playerId} session {players[i].sessionId}");
-                            players[i].session.Send(broadcastFrameInput);
-                        }
-                    }
-
-
+                    broadcastFrameInput.inputCount = playerCount;
+                    broadcastFrameInput.inputs = toSend;
+                    logger.Info($"frame send {frame}\n");
+                    BoardCastFrameInput(broadcastFrameInput);
                     
                 }
                 finally
                 {
                     if(lockTaken){
                         _spinLock.Exit();
-                        logger.Warn("[Doupdate]Release Lock");
+                       // logger.Warn("[Doupdate]Release Lock");
                     }
                     
                 }
@@ -132,16 +150,41 @@ namespace FS.Server
 
         public void DoLateUpdate()
         {
-            // for (int i = 0; i < playerCount; i++)
-            // {
-            //     nextFrameOpt[i] = new PlayerInputInfo()
-            //     {
-            //         keyboardInput = FVector2.Zero,
-            //         mouseInput = FVector2.Zero
-            //     };
-            // }
-            
-            frame++;
+            if (isStart&&needClear)
+            {
+                bool lockTaken = false;
+                try
+                {
+                    _spinLock.Enter(ref lockTaken);
+                    needClear = false;
+                    //logger.Warn("[DoLateUpdate]Get Lock");
+
+                    tick2PlayerInfo.Remove(frame);
+                    // for (int i = 0; i < MaxPlayer; i++)
+                    // {
+                    //     nextFrameOpt[i] = new PlayerInputInfo()
+                    //     {
+                    //         keyboardInput = FVector2.Zero,
+                    //         mouseInput = FVector2.Zero
+                    //     };
+                    // }
+
+                    //inputMgsRecvCount = 0;
+                }
+                finally
+                {
+                    if (lockTaken)
+                    {
+                        _spinLock.Exit();
+                        //logger.Warn("[DoLateUpdate]Release Lock");
+
+                    }
+
+                }
+
+
+                frame++;
+            }
         }
         
         public void AddPlayer(ClientSession session, int sessionId)
@@ -213,19 +256,32 @@ namespace FS.Server
             try
             {
                 _spinLock.Enter(ref lockTaken);
-                logger.Warn("[ProcessInput]Get Lock");
-                nextFrameOpt[msg.playerId] = new PlayerInputInfo()
+
+                if (tick2PlayerInfo.TryGetValue(msg.frameId, out var inputInfos))
+                {   
+                    inputInfos[msg.playerId] = msg.inputs[0];
+                    
+                }
+                else
                 {
-                    keyboardInput = msg.inputs[0].keyboardInput,
-                    mouseInput = msg.inputs[0].mouseInput,
-                };
+                    PlayerInputInfo[] infos = new PlayerInputInfo[MaxPlayer];
+                    tick2PlayerInfo.Add(msg.frameId,infos);
+                    infos[msg.playerId] = msg.inputs[0];
+                }
+                //logger.Warn("[ProcessInput]Get Lock");
+ 
+                // nextFrameOpt[msg.playerId] = new PlayerInputInfo()
+                // {
+                //     keyboardInput = msg.inputs[0].keyboardInput,
+                //     mouseInput = msg.inputs[0].mouseInput,
+                // };
             }
             finally
             {
                 if (lockTaken)
                 {
                     _spinLock.Exit();
-                    logger.Warn("[ProcessInput]Release Lock");
+                    //logger.Warn("[ProcessInput]Release Lock");
                 }
             }
 
@@ -237,6 +293,17 @@ namespace FS.Server
             //     //sb.Append($" -> ({inputInfo?.keyboardInput}, {inputInfo?.mouseInput}) ");
             // }
             // logger.Info($"Player {playerId} input: {sb.ToString()}");
+        }
+        
+        public void BoardCastFrameInput(MsgFrameInput infos)
+        {
+
+            foreach (var id in playerId)
+            {
+                players[id].session.Send(infos);
+            }
+            
+            
         }
         
         public void DoExit(ClientSession clientSession)

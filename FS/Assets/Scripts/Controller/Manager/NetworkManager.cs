@@ -55,11 +55,11 @@ namespace FS.Manager
         }
 
 
-        public void Send(ISendable messageFormater)
-        {
-            var message = MessageFactory.CreateMessage(messageFormater);
-            _session.Send(message);
-        }
+        // public void Send(ISendable messageFormater)
+        // {
+        //     var message = MessageFactory.CreateMessage(messageFormater);
+        //     _session.Send(message);
+        // }
 
         public void Update()
         {
@@ -128,14 +128,16 @@ namespace FS.Manager
         public void PushMsgFrameInput(MsgFrameInput serverFrameInput)
         {
  
+
             //TODO:修改成保存全部
             //syncFrame = serverFrameInput.frameId;
             receivedFrame++;
             if (serverFrameInput.inputCount >= _gameManager.PlayerId)
             {
                 //Debug.Log($"Recv input action : {serverFrameInput.inputs[_gameManager.PlayerId].keyboardInput}");
+                //acceptedPlayerInputInfos[(int)receivedFrame] = serverFrameInput.inputs[_gameManager.PlayerId];
                 acceptedPlayerInputInfos.Add(serverFrameInput.inputs[_gameManager.PlayerId]);
-                Debug.Log($"Recv input action : {serverFrameInput.inputs[_gameManager.PlayerId].keyboardInput}, " +
+                Debug.Log($"[{ClassName}] {receivedFrame} {Thread.CurrentThread.ManagedThreadId} Recv input action : {serverFrameInput.inputs[_gameManager.PlayerId].keyboardInput}, " +
                           $"{serverFrameInput.inputs[_gameManager.PlayerId].mouseInput}");
             }
  
@@ -147,14 +149,25 @@ namespace FS.Manager
         {
             //TODO:随之修改成保存全部
             int current = (int)(syncFrame);
-            if (current < 0 || current > receivedFrame)
+            if (current < 0 || current >= receivedFrame)//执行超前了
             {
                 Debug.LogWarning($"[{ClassName}] Getting frame:{current} with received {receivedFrame}");
                 return PlayerInputInfo.Empty;
             }
 
             syncFrame++;
-            return acceptedPlayerInputInfos[current];
+            try
+            {
+
+
+                return acceptedPlayerInputInfos[current];
+            }
+            catch (Exception e)
+            {
+                
+                Debug.LogError($"[{ClassName}] index: {current} {Thread.CurrentThread.ManagedThreadId}  {acceptedPlayerInputInfos.Count}\nError getting frame input: {e.Message}\n,s:{e.StackTrace}");
+                return PlayerInputInfo.Empty;
+            }
         }
         
         public void AddMsgCtl(MsgCtl msgCtl)

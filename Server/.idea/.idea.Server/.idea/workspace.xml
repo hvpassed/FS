@@ -7,7 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e707b2b-d515-430f-9377-e4b30048535c" name="更改" comment="" />
+    <list default="true" id="4e707b2b-d515-430f-9377-e4b30048535c" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/../FS/Assets/Scripts/Controller/Manager/NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FS/Assets/Scripts/Controller/Manager/NetworkManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Server/bin/Debug/net9.0/Server.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/ref/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/obj/Debug/net9.0/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Server/obj/Debug/net9.0/refint/Server.dll" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +29,15 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4f21b49fd9a46b26387bb4918d78aeb486af1c1fcddfd3862c94892d76a5df/Socket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/525d52585f9c56d742fa4cccbfd5f4864e1ba7a77ba35105172c8c8787c041/AsyncVoidMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd78d721b4d2e087973589a192ed78a87972d99119f316e56312c4db6e1b078/SocketPal.Windows.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -34,6 +51,8 @@
   &quot;keyToString&quot;: {
     &quot;.NET 项目.Server.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,13 +109,17 @@
       <workItem from="1748190467976" duration="4205000" />
       <workItem from="1748234539609" duration="4417000" />
       <workItem from="1748257675410" duration="2463000" />
-      <workItem from="1748267791180" duration="5774000" />
+      <workItem from="1748267791180" duration="11092000" />
+      <workItem from="1748410008588" duration="590000" />
+      <workItem from="1748524927259" duration="5463000" />
+      <workItem from="1748929876334" duration="8182000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

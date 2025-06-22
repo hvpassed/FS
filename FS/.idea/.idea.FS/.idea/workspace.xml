@@ -7,7 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="476121ec-ef6e-426c-8eb6-2719e8f5d17b" name="更改" comment="" />
+    <list default="true" id="476121ec-ef6e-426c-8eb6-2719e8f5d17b" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/Manager/NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/Manager/NetworkManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/bin/Debug/net9.0/Server.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/ref/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Server/obj/Debug/net9.0/refint/Server.dll" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +28,9 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0c06aab94fea47c687b0fd311c155d5a176800/a0/949e26f6/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
@@ -31,6 +47,7 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
   </component>
@@ -42,20 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET 项目.Server.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
-    "vue.rearranger.settings.migration": "true",
-    "附加到 Unity 编辑器.附加到 Unity 编辑器.executor": "Debug"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET 项目.Server.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;附加到 Unity 编辑器.附加到 Unity 编辑器.executor&quot;: &quot;Debug&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="附加到 Unity 编辑器.附加到 Unity 编辑器">
     <configuration name="Server" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -143,13 +162,26 @@
       <workItem from="1748155764421" duration="16211000" />
       <workItem from="1748191378650" duration="5913000" />
       <workItem from="1748234544402" duration="10281000" />
-      <workItem from="1748268056501" duration="6804000" />
+      <workItem from="1748268056501" duration="11424000" />
+      <workItem from="1748408273444" duration="3405000" />
+      <workItem from="1748524967094" duration="5904000" />
+      <workItem from="1748929831137" duration="6586000" />
     </task>
+    <task id="LOCAL-00001" summary="客户端操作">
+      <option name="closed" value="true" />
+      <created>1748529744474</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748529744474</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -159,6 +191,8 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="客户端操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="客户端操作" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
